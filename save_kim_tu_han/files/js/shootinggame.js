@@ -35,7 +35,7 @@ var shootinggamegame = {
         this.objects.shootinggame.style.top = (`calc(var(--displaywidth) * ${to.y * speed})`);
     },
     msgs: {
-        yongjang: `<p><span style="font-size: 200%;">메롱 날 맞힐수 있냐 병☆신아 조까라 으하하하하</span><span>-목표물-</span></p>`,
+        yongjang: `<p><span style="font-size: 200%;">메롱 날 맞출수 있냐 병☆신아 조까라 으하하하하</span><span>-목표물-</span></p>`,
         pok4: `<p><img src="./files/img/fuckednaration.png" width="300" style="background:url('./files/img/pokpal.gif')"><br> <span style="font-size:250%;">목표물 총맞고 폭☆4</span></p>`,
     },
     shootinggamemove2(from, plus) {
