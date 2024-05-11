@@ -206,12 +206,10 @@ var shootinggamegame = {
     inloadingtomagazine: false,
     weaponloading(callback) {
         this.inloadingtomagazine = true;
-        this.objects.newweapon.src = './files/img/m1911_0.mp4';
-        this.objects.newweapon.play();
         window.setTimeout(function () {
             callback();
             shootinggamegame.inloadingtomagazine = false;
-        }, this.objects.newweapon.duration * 1000);
+        }, 200);
     },
 
 }
@@ -249,12 +247,10 @@ document.getElementById("pistol_0").onclick = function (e) {
             shootinggamegame.rounds -= 1;
             shootinggamegame.inloadingtomagazine = true;
             shootinggamegame.willshootinggamemove = false;
-            shootinggamegame.objects.newweapon.src = './files/img/m1911_1.mp4';
-            shootinggamegame.objects.newweapon.play();
             window.setTimeout(function () {
                 shootinggamegame.firing();
                 shootinggamegame.inloadingtomagazine = false;
-            }, shootinggamegame.objects.newweapon.duration * 1000);
+            }, 1000);
             shootinggamegame.objects.weapon.focus();
 
         } else {
