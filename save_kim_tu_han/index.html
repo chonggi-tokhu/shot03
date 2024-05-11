@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김두한 살리기 게임(나레이션 폭☆8시키기)</title>
+    <link rel="stylesheet" href="./files/css/ColourgreyShorter.css">
+    <script src="./files/js/ColourgreyShorterCSSJS.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <style>
+        .gameover {
+            position: relative;
+            top: calc(var(--displaywidth)*0.8);
+            font-weight: 900;
+            background: transparent;
+            text-align: center;
+            color: #ffa520;
+            font-size: 250%;
+            text-shadow: 2px 2px 1px #9ce, -1px -1px #9ce;
+        }
+
+        .gameovermodal {
+            z-index: 1000;
+            position: relative;
+            background: #fff;
+            color: black;
+            height: 70%;
+            width: 80%;
+            top: 5%;
+            left: 10%;
+        }
+
+        .gameovermodalbg {
+            text-align: center;
+            z-index: 1000;
+            top: 0px;
+            display: none;
+            position: fixed;
+            width: 96%;
+            left: 2%;
+            height: 105%;
+            background: rgba(160, 120, 160, 0.5);
+        }
+
+        #naration {
+            position: absolute;
+            height: calc(var(--displaywidth) * 3.5);
+            top: calc(var(--displaywidth) * 2.0);
+            left: calc(var(--displaywidth)*0);
+            margin-left: calc(var(--displaywidth)*1.2);
+        }
+
+        #pistol_0 {
+            width: calc(var(--displaywidth) * 4) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+        <div class="body2">
+            <div class="header">
+                <h1>김두한 살리기 게임</h1>
+                <h4>규칙은 간단합니다. 나레이션의 '1972년' 대사가 나오기 전에 나레이션을 총으로 쏴 폭☆8시키면 됩니다. <br> 제한시간을 넘거나 실패할 경우 김두한이 사망하며, 점수 5가
+                    깎이고,
+                    성공하면 점수 10이
+                    올라갑니다. <span style="text-decoration: line-through;color: grey;">잘해보셈</span></h4>
+            </div>
+        </div>
+        <div class="btn-group">
+
+            <button id="startBtn" class="btn btn-success"
+                onclick="shootinggamegame.start(function(p1){p1.updatepoints();p1.shootinggamemove();p1.objects.shootinggame.style.backgroundImage='none';document.getElementById('kim_tu_han_death').play();});">게임
+                시작하기</button>
+            <div>점수:</div>
+            <div id="showpoints">0</div>
+        </div>
+        <div id="level" class="levelarea">
+            <div class="levelareaul">
+                <div class="li" style="left: 0px;position: relative;"> 현재 난이도:<span id="leveldiv"></span> </div>
+                <div class="li">
+                    <span
+                        onclick="document.getElementById('leveldescdiv').style.display=(document.getElementById('leveldescdiv').style.display=='none')?'block':'none';"
+                        role="button" style="cursor: pointer;"> [펼치기/접기]현재 난이도 난이도 설명: </span>
+                    <span id="leveldescdiv"
+                        style="display: none;background: inherit;width: calc(var(--displaywidth)*1.45);position: relative;left: calc((var(--displaywidth)*0.55));letter-spacing: 0.1rem;"></span>
+                </div>
+                <div class="li">
+                    <span onclick="document.getElementById('startBtn').click();">지금 게임 시작</span>
+                </div>
+            </div>
+        </div>
+        <div class="gameovermodalbg">
+            <div class="gameovermodal">
+                <button onclick="document.getElementsByClassName('gameovermodalbg')[0].style.display='none';"
+                    id="closemodal">&times; 닫기</button>
+                <div class="" id="yongjang">
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="body1" style="margin-top: 10em;margin-left: calc(var(--displaywidth)*1.3);">
+            <video src="./files/img/ki_tu_han_death.mp4" id="kim_tu_han_death" width="350"></video>
+            <br>
+            <div id="pistol_bg" style="display: inline-block;margin-left: 20em;margin-top: -25em;">
+                <video src="./files/img/m1911_1.mp4" id="pistol_0"></video>
+            </div>
+            <img src="./files/img/mr_naration.png" id="naration" width="200">
+        </div>
+    </div>
+    <script src="./files/js/shootinggame.js"></script>
+</body>
+
+</html>
