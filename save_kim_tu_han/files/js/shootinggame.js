@@ -145,7 +145,7 @@ var shootinggamegame = {
         requestAnimationFrame(myfunction);
 
     },
-    rounds: 7,
+    rounds: 8,
     play() {
         shootinggamegame.shootinggamemove({ x: this.objects.shootinggame.style.left.replace(/calc\(var\(--displaywidth\) \* (.*)\)/gi, Number((/$1/ + "").replace(`/`, ``).replace(`/`, ``))), y: this.objects.shootinggame.style.top.replace(/calc\(var\(--displaywidth\) \* (.*)\)/gi, Number((/$1/ + "").replace(`/`, ``).replace(`/`, ``))), }, { x: 5, y: 5 });
     },
@@ -255,9 +255,9 @@ document.getElementById("pistol_0").onclick = function (e) {
 
         } else {
             shootinggamegame.objects.weapon.blur();
-            var reloadingrounds = confirm("콜트 1911의 7발탄창 안에 든 총알을 다 썼습니다. 재장전하시겠습니까?");
+            var reloadingrounds = confirm("발터 P38의 8발탄창 안에 든 총알을 다 썼습니다. 재장전하시겠습니까?");
             if (reloadingrounds == true) {
-                shootinggamegame.weaponloading(function (param1) { param1.rounds = 7; });
+                shootinggamegame.weaponloading(function (param1) { param1.rounds = 8; });
             }
             shootinggamegame.objects.weapon.blur();
         }
