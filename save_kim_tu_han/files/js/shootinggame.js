@@ -17,7 +17,7 @@ var shootinggamegame = {
                 if (!shootinggamegame.gameoverv) {
                     shootinggamegame.gameover(false);
                     var next000 = (shootinggamegame.levelnow < 6) ? ` onclick="document.getElementById('startBtn').click();document.getElementById('closemodal').click()"` : ``;
-                    shootinggamegame.alimchang(shootinggamegame.msgs["yongjang"] + "..." + `<p class="gameover"><span>You lost...</span><br><span ${next000}>play again | your level:${shootinggamegame.levels[shootinggamegame.levelnow].levelname}</span></p>`);
+                    shootinggamegame.alimchang(shootinggamegame.msgs["yongjang"] + "..." + `<p class="gameover"><span>너 졌음...</span><br><span ${next000}>다시 시도하기 | your level:${shootinggamegame.levels[shootinggamegame.levelnow].levelname}</span></p>`);
                 }
             }, 18750);
         } else {
@@ -170,7 +170,7 @@ var shootinggamegame = {
                 document.getElementById("leveldescdiv").innerHTML = shootinggamegame.levels[shootinggamegame.levelnow].desc;
             } else {
                 var next000 = (this.levelnow < 6) ? ` onclick="document.getElementById('startBtn').click();document.getElementById('closemodal').click()"` : ``;
-                this.alimchang(this.msgs["yongjang"] + "..." + `<p class="gameover"><span>You lost...</span><br><span ${next000}>play again | your level:${this.levels[this.levelnow].levelname}</span></p>`);
+                this.alimchang(this.msgs["yongjang"] + "..." + `<p class="gameover"><span>너 졌음...</span><br><span ${next000}>다시 시도하기 | your level:${this.levels[this.levelnow].levelname}</span></p>`);
                 this.gameover(false);
             }
             document.getElementById("startBtn").innerHTML = "게임 시작하기";
@@ -190,9 +190,9 @@ var shootinggamegame = {
         else {
             if (youwon == true) {
                 this.points += 10;
-                var gameovertext = (this.levelnow < 6) ? "NEXT" : "GAME OVER";
+                var gameovertext = (this.levelnow < 6) ? "다음 난이도" : "GAME OVER";
                 var next000 = (this.levelnow < 6) ? ` onclick="document.getElementById('startBtn').click();document.getElementById('closemodal').click()"` : ``;
-                this.kutkonpok4(`<p class="gameover"><span>You won!!! | your level:${this.levels[this.levelnow].levelname}</span><br><span ${next000}>${gameovertext}</span></p>`);
+                this.kutkonpok4(`<p class="gameover"><span>너 이김!!! | your level:${this.levels[this.levelnow].levelname}</span><br><span ${next000}>${gameovertext}</span></p>`);
                 document.getElementById('kim_tu_han_death').pause();
                 document.getElementById('kim_tu_han_death').currentTime = 0;
             } else {
