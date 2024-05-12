@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한글표기를 로마자로!</title>
+    <link rel="stylesheet"
+        href="https://chonggi-tokhu.github.io/shot03/save_kim_tu_han/files/css/ColourgreyShorter.css">
+    <script src="https://chonggi-tokhu.github.io/shot03/save_kim_tu_han/files/js/ColourgreyShorterCSSJS.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <style>
+        a {
+            color: #3434e5;
+        }
+
+        .dark_mode,
+        .dark_mode svg text {
+            background: #012345;
+            color: #dfefff;
+        }
+
+        .dark_mode a {
+            color: orange;
+        }
+
+        .dark_mode input::-webkit-input-placeholder {
+            color: #bbb;
+        }
+
+        .dark_mode input {
+            background: #bbbbbb88;
+            border: 3px solid #050505;
+            color: #dfefff;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./mccune_reischauer_kroman.js"></script>
+    <div class="body">
+        <div>
+            <div style="display: flex;">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="450"
+                    height="300" viewBox="-36 -24 72 48">
+                    <path fill="#fff" d="M-18-12h36v24h-36z" />
+                    <g transform="rotate(-56.31)">
+                        <g id="b">
+                            <path id="a" stroke="#000" stroke-width="1" d="M-3-12.5H3m-6 1.5H3m-6 1.5H3" />
+                            <use xlink:href="#a" y="22" />
+                        </g>
+                        <path stroke="#fff" d="M0 8.5v5" />
+                        <circle r="6" fill="#cd2e3a" />
+                        <path fill="#0047a0" d="M0-6A3 3 0 0 0 0 0a3 3 0 0 1 0 6 6 6 0 0 1 0-12Z" />
+                    </g>
+                    <g transform="rotate(-123.69)">
+                        <use xlink:href="#b" />
+                        <path stroke="#fff" d="M0-11.75v1.5M0 8.5v1.75m0 1.5v1.5" />
+                    </g>
+                    <text x="-20%" y="20%" style="font-weight:900;font-size:65%;">가나다...</text>
+                </svg>
+                <div style="font-size: 350%;font-weight: 800;margin-top: 7%;margin-right: 4%;">→</div>
+
+                <div
+                    style="font-size: 350%;font-weight: 900;margin-top: 7%;margin-left: 2%;background: url('./flag_of_roman_empire.svg');background-size: contain;background-repeat: no-repeat;">
+                    ABC...</div>
+            </div>
+        </div>
+        <div class="header">
+            <h1></h1>
+            <h3>아직 미완성이며, 구현 못한 기능이 많습니다. 게다가 아직은 실제로 공개해서 사용시키려는게 아니고 프로토타입 단계입니다.</h3>
+            <h5>이 변환기는 <span onclick="input.value=example_hangul_source_text;button.click();">매큔-라이샤워</span>를 기준으로 합니다.
+                위에 설명했듯 아직 미완성이고 시제품 단계라 아직 표기법 규칙이 부족합니다.</h5>
+            <div>
+                <ul>
+                    <li style="list-style-type: none;">
+                        <h3><span>주의할 점들:</span></h3>
+                    </li>
+                    <li>
+                        <p><span>다시 말하지만 분명히 <span style="font-weight: bold;">미완성</span>이라고 했습니다. 좀 안맞는거 나올수도 있는데 그건 개발
+                                끝나면 해결되는거고, 꼬우면 당신이 직접 만드시던지요.</span></p>
+                    </li>
+                    <li>
+                        <p><span>로마자=라틴문자입니다. 라틴문자를 대중적인 말로 로마자라고 부르는겁니다. 그러니까 오해 없기를...</span></p>
+                    </li>
+                    <li>
+                        <p><span>이 코드는 비교해보면 대충 감이 오겠지만, <a
+                                    href="https://github.com/victorteokw/kroman-js/blob/master/kroman.js"
+                                    target="_blank" style="font-size: 85%;font-weight: 800;">victorteokw라는
+                                    분의 단순한 국어의 현행 로마자 표기법 자동 변환 NPM모듈
+                                    코드</a>를 기반으로 <span style="text-decoration:line-through;color:grey;">합법적으로 퍼와서</span>
+                                일반 클라이언트측 브라우저가 읽는 JS로 바꾸고 MR표기법식에 맞게 <a href="https://github.com/chonggi-tokhu"
+                                    target="_blank">제</a>가 직접 개조해 만든겁니다.</span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="input-group" style="width: 100vw;height: 5em;">
+            <input type="text" id="input" placeholder="변환할 한글" style="width:30%">
+            <input type="text" id="output" disabled placeholder="출력될 로마자" style="width: 40%;" style="display: block;">
+            <button style="background: url('./won_10000.png');background-size: contain;background-repeat: no-repeat;"
+                id="button">한글을
+                로마자로 변환!</button>
+            <button class="btn btn-primary"
+                onclick="mycopyfunction(document.getElementById('eltocopy'),false);">복사!</button>
+        </div>
+        <div style="display: flex;">
+            <div id="hangul_source" style="width: 50%;overflow-y: scroll;word-break: break-all;min-height: 1em;"></div>
+            <div id="eltocopy" style="width: 50%;overflow-y: scroll;word-break: break-all;min-height: 1em;">
+            </div>
+        </div>
+        <div
+            style="position: fixed;max-width: 30vw;right:  0%;top: 0%;z-index: 500;margin-top: 2em;margin-right: 2em;background: #fff;color: #050505;padding: 0.5em;border-radius: 0.85em;border: 1.5px solid #050505;box-shadow: 1px 1px 1.5px 1.5px #444444;">
+            <span>시발 제가 만들었지만 존나 눈아프네요. 필요하신분은 다크모드를 켜세요. <span style="text-decoration:line-through;color:grey;"> 오히려 눈이
+                    더 아플수도 있음</span></span>
+            <label for="darkmode">DARKMODE ON/OFF</label><input type="checkbox" id="darkmode"
+                onchange="(this.checked)?body_div.classList.add('dark_mode'):body_div.classList.remove('dark_mode');">
+        </div>
+    </div>
+    <script>
+        var body_div = document.getElementsByClassName('body')[0];
+        var converter = new kroman_for_client();
+        var input = document.getElementById("input");
+        var output = document.getElementById("output");
+        var button = document.getElementById("button");
+        async function mycopyfunction(txttocopyel, ishttps) {
+            var el = document.createElement("div");
+            el.innerHTML = txttocopyel.innerHTML;
+            var abc = document.body.appendChild(el);
+            abc.style.position = "absolute";
+            abc.style.left = "-999999px";
+            if (document.body.createTextRange) {
+                var range = document.body.createTextRange();
+                range.moveToElementText(abc);
+                range.select();
+                if (ishttps) {
+                    await navigator.clipboard.writeText(range);
+                } else {
+                    try {
+                        document.execCommand('copy')
+                    } catch (error) {
+                        console.error(error);
+                    } finally {
+                        abc.remove();
+                    }
+                }
+            } else if (window.getSelection) {
+                var selection = window.getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(abc);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                if (ishttps) {
+                    await navigator.clipboard.writeText(range);
+                } else {
+                    try {
+                        document.execCommand('copy')
+                    } catch (error) {
+                        console.error(error);
+                    } finally {
+                        confirm("다음과 같은 텍스트가 복사됨: " + abc.innerText);
+                        abc.remove();
+                    }
+                }
+            } else {
+                confirm("이 웹브라우저는 무식하게 매우매우 낡아서 텍스트 선택기능을 지원하지 않습니다.");
+            }
+            // Get the text field
+
+
+            // Alert the copied text
+
+        }
+        button.addEventListener("click", function () {
+            document.getElementById('hangul_source').innerHTML = input.value;
+            output.value = converter.parse(input.value);
+            document.getElementById('eltocopy').innerHTML = output.value;
+        });
+        var example_hangul_source_text = `세종대왕이 한글을 잘 만드셨습니다. 그래서 한국인은 똑똑해졌습니다. 이 풍진 세상을 만났으니 너의 희망이 무엇이냐 부귀와 영화를 누렸으면 희망이 좆까`;
+    </script>
+</body>
+
+</html>
