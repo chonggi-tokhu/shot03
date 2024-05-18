@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기계식 채팅</title>
+</head>
+
+<body>
+    <div id="output"></div>
+    <input type="text" id="chatting" placeholder="채팅 내용"><button id="mybtn">보내기</button><button id="btn2">예시 보기</button>
+    <script src="./files/js/chatbot_0.js"></script>
+    <script>
+        var chatting9 = document.getElementById("chatting");
+        var output = document.getElementById("output");
+        var btn = document.getElementById("mybtn");
+        var btn2 = document.getElementById("btn2");
+        btn.addEventListener("click", function (ev) {
+            test.askandanswer(chatting9.value, function (a) {
+                output.innerHTML = a;
+            });
+        });
+        btn2.addEventListener("click", function (ev) {
+            test.test();
+            test.bot.sentencesregexp.savefunc("유로봇은 M자탈모이다.");
+            var msg = '유로봇은 빡빡이입니까?';
+            for (var i = 0; i < msg.length; i++) {
+                window.setTimeout(function () { chatting9.value += msg[i]; }, 125 * i);
+            }
+            btn.click();
+        });
+    </script>
+</body>
+
+</html>
