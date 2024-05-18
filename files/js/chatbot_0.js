@@ -1,9 +1,13 @@
 var chatting000 = class {
     constructor() { }
     sentencesregexp = {
+        thisfunc() {
+            return this;
+        },
         /*regexp: /(.*?)[은는이가](.*?)다/gmi,
         interpret:function(){},*/
         savefunc: function (strparam) {
+            var thisobj = this;
             if (typeof strparam !== 'string') {
                 strparam = new String(strparam);
             }
@@ -14,36 +18,37 @@ var chatting000 = class {
                 data2 = strparam.replace(/(.*?)[은는이가] (.*?)[을를] (.*?)([한는])(다|이다)\./gmi, `$3$4`);
                 var data3 = strparam.replace(/(.*?)[은는이가] (.*?)[을를] (.*?)([한는])(다|이다)\./gmi, `$2`);
                 if (data1 !== '' && data2 !== '') {
-                    chatting000.datasobj.save2(data1, data2, '현', data3);
+                    thisfunc().save2(data1, data2, '현', data3);
                 }
             } else if (strparam.match(/(.*?)[은는이가] (.*?)[을를] (.*?)(.[었였했])다\./gmi) !== null) {
                 data1 = strparam.replace(/(.*?)[은는이가] (.*?)[을를] (.*?)(.[었였했])다\./gmi, `$1`);
                 data2 = strparam.replace(/(.*?)[은는이가] (.*?)[을를] (.*?)(.[었였했])다\./gmi, `$3$4`);
                 var data3 = strparam.replace(/(.*?)[은는이가] (.*?)[을를] (.*?)(.[었였했])다\./gmi, `$2`);
                 if (data1 !== '' && data2 !== '') {
-                    chatting000.datasobj.save2(data1, data2, '과', data3);
+                    thisfunc().save2(data1, data2, '과', data3);
                 }
             } else if (strparam.match(/(.*?)[은는이가] (.*?)(.[었였했])다\./gmi) !== null) {
                 data1 = strparam.replace(/(.*?)[은는이가] (.*?)(.[었였했])다\./gmi, `$1`);
                 data2 = strparam.replace(/(.*?)[은는이가] (.*?)(.[었였했])다\./gmi, `$2$3`);
                 if (data1 !== '' && data2 !== '') {
-                    chatting000.datasobj.save2(data1, data2, '과');
+                    thisfunc().save2(data1, data2, '과');
                 }
             } else if (strparam.match(/(.*?)[은는이가] (.*?)([한는])다\./gmi) !== null) {
                 data1 = strparam.replace(/(.*?)[은는이가] (.*?)([한는])다\./gmi, `$1`);
                 data2 = strparam.replace(/(.*?)[은는이가] (.*?)([한는])다\./gmi, `$2$3`);
                 if (data1 !== '' && data2 !== '') {
-                    chatting000.datasobj.save2(data1, data2, '현');
+                    thisfunc().save2(data1, data2, '현');
                 }
             } else if (strparam.match(/(.*?)[은는이가] (.*?)(다|이다)\./gmi) !== null) {
                 data1 = strparam.replace(/(.*?)[은는이가] (.*?)(다|이다)\./gmi, `$1`);
                 data2 = strparam.replace(/(.*?)[은는이가] (.*?)(다|이다)\./gmi, `$2`);
                 if (data1 !== '' && data2 !== '') {
-                    chatting000.datasobj.save(data1, data2);
+                    thisfunc().save(data1, data2);
                 }
             }
         },
         answerfunc: function (question) {
+            var thisobj = this;
             var rtv = '';
             if (typeof question !== 'string') {
                 question = new String(question);
@@ -52,19 +57,20 @@ var chatting000 = class {
             if (!questiontype && question.match(/(.*?)[은는이가] (.*?)(입니까|이야|야|임|일까|예요|이에요)\?/gmi) !== null) {
                 data1 = question.replace(/(.*?)[은는이가] (.*?)(입니까|이야|야|임|일까|예요|이에요)\?/gmi, `$1`);
                 data2 = question.replace(/(.*?)[은는이가] (.*?)(입니까|이야|야|임|일까|예요|이에요)\?/gmi, `$2`);
-                rtv = chatting000.datasobj.yes_no(data1, data2);
+                rtv = thisfunc().yes_no(data1, data2);
             } else {
                 if (question.match(/(.*?)[은는이가] 누구(입니까|예요|이에요|임|이야|야|일까|)\?/gmi) !== null) {
                     data1 = question.replace(/(.*?)[은는이가] 누구(입니까|예요|이에요|임|이야|야|일까|)\?/gmi, `$1`);
                     data2 = '누구';
-                    rtv = chatting000.datasobj.answer(data1, data2);
+                    rtv = thisfunc().answer(data1, data2);
                 }
             }
             return rtv;
         },
         similarword: function (word) {
+            var thisobj = this;
             var rtv = '';
-            chatting000.datasobj.data2s.similarwords.forEach(function (val, idx, arr) {
+            thisfunc().data2s.similarwords.forEach(function (val, idx, arr) {
                 if (val.indexOf(word) !== -1) {
                     rtv = (val.indexOf(word) == 0) ? val[1] : val[0];
                     console.log(rtv);
@@ -74,8 +80,9 @@ var chatting000 = class {
             return rtv;
         },
         oppositeword: function (word) {
+            var thisobj = this;
             var rtv = '';
-            chatting000.datasobj.data2s.oppositewords.forEach(function (val, idx, arr) {
+            thisfunc().data2s.oppositewords.forEach(function (val, idx, arr) {
                 if (val.indexOf(word) !== -1) {
                     rtv = (val.indexOf(word) == 0) ? val[1] : val[0];
                     console.log(rtv);
@@ -85,8 +92,9 @@ var chatting000 = class {
             return rtv;
         },
         oppositewords: function (word) {
+            var thisobj = this;
             var rtv = [];
-            chatting000.datasobj.data2s.oppositewords.forEach(function (val, idx, arr) {
+            thisfunc().data2s.oppositewords.forEach(function (val, idx, arr) {
                 if (val.indexOf(word) !== -1) {
                     rtv[rtv.length] = (val.indexOf(word) == 0) ? val[1] : val[0];
                     console.log(rtv);
@@ -95,8 +103,9 @@ var chatting000 = class {
             return rtv;
         },
         similarwords: function (word) {
+            var thisobj = this;
             var rtv = [];
-            chatting000.datasobj.data2s.similarwords.forEach(function (val, idx, arr) {
+            thisfunc().data2s.similarwords.forEach(function (val, idx, arr) {
                 if (val.indexOf(word) !== -1) {
                     rtv[rtv.length] = (val.indexOf(word) == 0) ? val[1] : val[0];
                     console.log(rtv);
@@ -105,22 +114,21 @@ var chatting000 = class {
             return rtv;
         },
         bustrain: function (dataparam) {
+            var thisobj = this;
             if (!Array.isArray(dataparam)) {
                 dataparam = [dataparam];
             }
             dataparam.forEach(function (val, idx, arr) {
                 if (typeof val === 'string') {
                     if (val.match(/(.*?)[은는이가] (.*?)[와과] 비슷하다\./gmi) !== null) {
-                        chatting000.datasobj.data2s.similarwords.push([val.replace(/(.*?)[은는이가] (.*?)[와과] 비슷하다\./gmi, '$1'), val.replace(/(.*?)[은는이가] (.*?)[와과] 비슷하다\./gmi, '$2')]);
+                        thisfunc().data2s.similarwords.push([val.replace(/(.*?)[은는이가] (.*?)[와과] 비슷하다\./gmi, '$1'), val.replace(/(.*?)[은는이가] (.*?)[와과] 비슷하다\./gmi, '$2')]);
                     }
                     if (val.match(/(.*?)[은는이가] (.*?)[와과] 반대된다\./gmi) !== null) {
-                        chatting000.datasobj.data2s.oppositewords.push([val.replace(/(.*?)[은는이가] (.*?)[와과] 반대된다\./gmi, '$1'), val.replace(/(.*?)[은는이가] (.*?)[와과] 반대된다\./gmi, '$2')]);
+                        thisfunc().data2s.oppositewords.push([val.replace(/(.*?)[은는이가] (.*?)[와과] 반대된다\./gmi, '$1'), val.replace(/(.*?)[은는이가] (.*?)[와과] 반대된다\./gmi, '$2')]);
                     }
                 }
             });
         },
-    }
-    datasobj = {
         datas: {},
         data2s: {
             oppositewords: [['바보', '천재'], ['똑똑한', '멍청한'], ['착한', '나쁜'], ['선한', '악한'], ['독일인', '프랑스인'], ['독일인', '영국인'], ['프랑스인', '영국인'], ['독일인', '스웨덴인'], ['독일인', '오스트리아인'], ['프랑스인', '스웨덴인'], ['영국인', '스웨덴인'], ['오스트리아인', '스웨덴인'], ['프랑스인', '오스트리아인'], ['영국인', '오스트리아인']],
@@ -166,8 +174,8 @@ var chatting000 = class {
                 return '이 질문에 대한 데이터가 없습니다.';
             }
             var qw2n = 0;
-            var oppositewordsofqw2 = chatting000.sentencesregexp.oppositewords(qw2);
-            var similarwordsofqw2 = chatting000.sentencesregexp.similarwords(qw2);
+            var oppositewordsofqw2 = thisfunc().oppositewords(qw2);
+            var similarwordsofqw2 = thisfunc().similarwords(qw2);
             var qw2oppn = 0;
             this.datas[qw1][1].forEach(function (val, idx, arr) {
                 if (val == qw2) {
@@ -207,7 +215,7 @@ var chatting000 = class {
             var specialarr0 = [];
             var specialidx0 = 0;
             this.datas[qw1][1].forEach(function (val, idx, arr) {
-                if (!chatting000.datasobj.datas3.includes(val)) {
+                if (!thisfunc().datas3.includes(val)) {
                     answerv = val;
                     specialidx0 = idx;
                     specialarr0 = arr;
